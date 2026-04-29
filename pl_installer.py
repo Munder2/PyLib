@@ -8,7 +8,7 @@ with open(folder+'/pl.py', 'w') as f:
 import sys
 
 def __install(package):
-    fd = '{folder}'
+    fd = '{folder}/libs/'
     url = 'https://github.com/Munder2/PyLib/raw/refs/heads/main/libs/'+package
     resp = r.get(url)
     print('Getting the package . . .')
