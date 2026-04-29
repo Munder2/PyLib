@@ -1,6 +1,8 @@
 # Example of a package
-ans = False
-def latch(a, b):
-  global ans
-  ans = (not(a) and ans) or b
-  return ans
+class _Latch:
+  def __init__(self):
+    self.__state = False
+  def __call__(self, a, b):
+    self.__state = b or(not a and self.__state)
+    return self.__state
+latch = _Latch()
