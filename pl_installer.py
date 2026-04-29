@@ -2,7 +2,7 @@ import pathlib
 print('Welcome to the PyLib Installer!')
 print('First, choose the folder to install PyLib.')
 folder = input('folder>> ')
-pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
+pathlib.Path(folder+'/libs/').mkdir(parents=True, exist_ok=True)
 with open(folder+'/pl.py', 'w') as f:
     f.write(f'''import requests as r
 import sys
@@ -13,17 +13,17 @@ def __install(package):
     resp = r.get(url)
     print('Getting the package . . .')
     if resp.status_code == 200:
-        print('Success!\nDownloading the package . . .')
+        print('Success!\\nDownloading the package . . .')
         with open(fd+package, 'wb') as f:
             f.write(resp.content)
         print('Success!')
     else:
-        print('Failed to get the package.\nTry looking for errors in the enterred package name.'); sys.exit(1)
+        print('Failed to get the package.\\nTry looking for errors in the enterred package name.'); sys.exit(1)
 
 if __name__ == '__main__':
     try:
         if sys.argv[1] == '-d':
-            __install()
+            __install(sys.argv[2])
         else:
             print('Usage: pl -d <package>'); sys.exit(1)
     except:
