@@ -2,5 +2,5 @@
 ans = False
 def latch(a, b):
   global ans
-  ans = (not(a) or ans) or b
+  ans = (not(a) and ans) or b
   return ans
