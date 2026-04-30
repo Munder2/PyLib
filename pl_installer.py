@@ -7,7 +7,7 @@ with open(folder+'/pl.py', 'w') as f:
     f.write(f'''import requests as r
 import sys
 
-def __install(package):
+def nstall(package):
     fd = '{folder}/libs/'
     url = 'https://github.com/Munder2/PyLib/raw/refs/heads/main/libs/'+package
     resp = r.get(url)
@@ -23,7 +23,7 @@ def __install(package):
 if __name__ == '__main__':
     try:
         if sys.argv[1] == '-d':
-            __install(sys.argv[2])
+            install(sys.argv[2])
         else:
             print('Usage: pl -d <package>'); sys.exit(1)
     except:
