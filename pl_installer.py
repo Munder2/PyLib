@@ -7,23 +7,27 @@ with open(folder+'/pl.py', 'w') as f:
     f.write(f'''import requests as r
 import sys
 
-def nstall(package):
+def __install(package):
     fd = '{folder}/libs/'
     url = 'https://github.com/Munder2/PyLib/raw/refs/heads/main/libs/'+package
     resp = r.get(url)
     print('Getting the package . . .')
     if resp.status_code == 200:
-        print('Success!\\nDownloading the package . . .')
+        print('Success!\nDownloading the package . . .')
         with open(fd+package, 'wb') as f:
             f.write(resp.content)
         print('Success!')
     else:
-        print('Failed to get the package.\\nTry looking for errors in the enterred package name.'); sys.exit(1)
+        print('Failed to get the package.\nTry looking for errors in the enterred package name.'); sys.exit(1)
+
+def installs(*packages):
+    for pack in packages:
+        __install(pack)
 
 if __name__ == '__main__':
     try:
         if sys.argv[1] == '-d':
-            install(sys.argv[2])
+            __install(sys.argv[2])
         else:
             print('Usage: pl -d <package>'); sys.exit(1)
     except:
